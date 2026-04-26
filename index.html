@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feral Scripture / 0rganic mechanic</title>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XF3P44VN7E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XF3P44VN7E');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
@@ -349,6 +357,7 @@
   .section-label:nth-of-type(5) { animation-delay: 1.25s; }
   .section-label:nth-of-type(6) { animation-delay: 1.42s; }
   .section-label:nth-of-type(7) { animation-delay: 1.58s; }
+  .section-label:nth-of-type(8) { animation-delay: 1.72s; }
 
   @media (max-width: 480px) {
     .wrapper { padding: 44px 18px 60px; }
@@ -446,35 +455,142 @@
   .manifesto {
     width: 100%;
     text-align: center;
-    margin-top: 42px;
-    margin-bottom: 8px;
-    padding: 0 8px;
+    margin-top: 44px;
+    margin-bottom: 10px;
+    padding: 0 12px;
   }
-  .manifesto-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(1.05rem, 3.6vw, 1.22rem);
-    color: var(--mist);
-    line-height: 1.75;
-    max-width: 460px;
-    margin: 0 auto 18px;
-    letter-spacing: 0.01em;
-    animation: manifesto-pulse 5s ease-in-out infinite;
-  }
-  .manifesto-coda {
+  .manifesto-body {
     font-family: 'Kalam', cursive;
     font-weight: 400;
-    font-size: clamp(0.95rem, 3.2vw, 1.08rem);
+    font-size: clamp(1.0rem, 3.4vw, 1.14rem);
     color: var(--glow);
-    opacity: 0.82;
-    letter-spacing: 0.03em;
-    animation: manifesto-pulse 5s ease-in-out infinite;
-    animation-delay: 0.8s;
+    line-height: 1.85;
+    max-width: 440px;
+    margin: 0 auto;
+    letter-spacing: 0.025em;
+    animation: breathe 6s ease-in-out infinite;
   }
-  @keyframes manifesto-pulse {
-    0%, 100% { opacity: 0.72; }
-    50%       { opacity: 1; }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.62; }
+    50%       { opacity: 0.95; }
+  }
+
+  /* ── Luma Events ─────────────────────────────────────────── */
+  .luma-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .luma-event-card {
+    width: 100%;
+  }
+  .luma-card-link {
+    display: block !important;
+    width: 100% !important;
+    text-decoration: none !important;
+    border: 1px solid rgba(126,204,192,0.15) !important;
+    border-radius: 2px !important;
+    background: rgba(255,255,255,0.025) !important;
+    overflow: hidden !important;
+    transition: border-color 0.25s, background 0.25s, transform 0.2s !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+  }
+  .luma-card-link:hover {
+    border-color: rgba(126,204,192,0.38) !important;
+    background: rgba(255,255,255,0.05) !important;
+    transform: translateX(4px) !important;
+  }
+  .luma-card-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+  }
+  .luma-card-img {
+    width: 58px;
+    height: 58px;
+    object-fit: cover;
+    border-radius: 2px;
+    flex-shrink: 0;
+    opacity: 0.88;
+  }
+  .luma-card-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .luma-card-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--parchment);
+    letter-spacing: 0.04em;
+  }
+  .luma-card-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--mist);
+    line-height: 1.3;
+  }
+  .luma-card-rsvp {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--teal-light);
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* ── Ambient music player ────────────────────────────────── */
+  .music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .music-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(126,204,192,0.35);
+    background: rgba(11,15,20,0.85);
+    backdrop-filter: blur(8px);
+    color: var(--glow);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 12px rgba(126,204,192,0.15);
+  }
+  .music-btn:hover {
+    border-color: rgba(126,204,192,0.7);
+    box-shadow: 0 0 20px rgba(126,204,192,0.35);
+  }
+  .music-btn.playing {
+    animation: btn-pulse 3s ease-in-out infinite;
+  }
+  @keyframes btn-pulse {
+    0%,100% { box-shadow: 0 0 12px rgba(126,204,192,0.2); }
+    50%      { box-shadow: 0 0 28px rgba(126,204,192,0.55); }
+  }
+  .music-label {
+    font-family: 'Kalam', cursive;
+    font-size: 0.65rem;
+    color: rgba(126,204,192,0.5);
+    letter-spacing: 0.05em;
+    text-align: right;
+  }
+  .music-frame {
+    display: none;
   }
 </style>
 </head>
@@ -596,16 +712,60 @@
     </a>
   </div>
 
+  <!-- Luma Events -->
+  <div class="section-label">[ upcoming events ]</div>
+  <div class="luma-section">
+
+    <!-- Event 1: Feral Market -->
+    <div class="luma-event-card">
+      <a class="luma-card-link"
+         href="https://luma.com/kafw4g5v"
+         target="_blank" rel="noopener">
+        <div class="luma-card-inner">
+          <img class="luma-card-img"
+               src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,background=white,quality=75,width=400,height=400/event-covers/wt/cbd3c269-1bf9-4a08-a19b-20358931fecd.jpg"
+               alt="Feral Market" />
+          <div class="luma-card-text">
+            <div class="luma-card-title">Feral Market</div>
+            <div class="luma-card-sub">Eggs. Plants. Words. Take what you need.</div>
+            <div class="luma-card-rsvp">RSVP →</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Event 2: Coffee & Poems @ Sunset -->
+    <div class="luma-event-card">
+      <a class="luma-card-link"
+         href="https://luma.com/m8plhiy9"
+         target="_blank" rel="noopener">
+        <div class="luma-card-inner">
+          <img class="luma-card-img"
+               src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,background=white,quality=75,width=400,height=400/event-covers/42/bdf0a20e-efbf-4df1-bcb7-13027b9faa38.jpg"
+               alt="Coffee & Poems @ Sunset" />
+          <div class="luma-card-text">
+            <div class="luma-card-title">Golden Hour Poems & Coffee</div>
+            <div class="luma-card-sub">Anclote River Park · Holiday, FL · Come as you are.</div>
+            <div class="luma-card-rsvp">RSVP →</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
   <!-- Manifesto -->
   <div class="manifesto">
-    <p class="manifesto-quote">
-      We forgot dirt was medicine and rhythm was prayer.
-      Somewhere between what you love and what the world needs,
-      there's a fire that doesn't burn out.
-      We're learning to live there. Feral and on purpose.
-      This is the re-wilding. It starts here, with you, with us, with now.
+    <p class="manifesto-body">
+      We forgot dirt was medicine and rhythm was prayer.<br>
+      Somewhere between what you love and what the world needs,<br>
+      there's a fire that doesn't burn out.<br>
+      We're learning to live there. Feral and on purpose.<br>
+      This is the re-wilding.<br>
+      It starts here, with you, with us, with now.<br><br>
+      Stay tuned for so much more...<br>
+      This is only the beginning ✨
     </p>
-    <p class="manifesto-coda">Stay tuned for so much more... This is only the beginning ✨</p>
   </div>
 
   <!-- Venmo QR -->
@@ -729,14 +889,26 @@
   // ── Comet ────────────────────────────────────────────────
   function Comet(){ this.spawn(); }
   Comet.prototype.spawn=function(){
-    // Always start from left edge or top edge
-    var edge = Math.random()<0.6 ? 'top' : 'left';
-    if(edge==='top'){ this.x=rand(W*0.05,W*0.65); this.y=rand(-35,-8); }
-    else            { this.x=rand(-35,-8);          this.y=rand(H*0.04,H*0.5); }
-    var angle = rand(22,52)*Math.PI/180;
-    var spd   = rand(1.2, 2.4);           // ~1/3 of original speed
-    this.vx = Math.cos(angle)*spd;
-    this.vy = Math.sin(angle)*spd;
+    // 50/50 left-to-right vs right-to-left; also top edge both ways
+    var dir = Math.random() < 0.5 ? 'ltr' : 'rtl';
+    var edge = Math.random() < 0.55 ? 'side' : 'top';
+    var angle, spd;
+    spd = rand(1.2, 2.4);
+    if(dir === 'ltr'){
+      // left-to-right: start left edge or top-left
+      if(edge === 'top'){ this.x=rand(W*0.05,W*0.55); this.y=rand(-35,-8); }
+      else              { this.x=rand(-35,-8);          this.y=rand(H*0.04,H*0.5); }
+      angle = rand(22,52)*Math.PI/180;
+      this.vx =  Math.cos(angle)*spd;
+      this.vy =  Math.sin(angle)*spd;
+    } else {
+      // right-to-left: start right edge or top-right
+      if(edge === 'top'){ this.x=rand(W*0.45,W*0.95); this.y=rand(-35,-8); }
+      else              { this.x=W+rand(8,35);          this.y=rand(H*0.04,H*0.5); }
+      angle = rand(22,52)*Math.PI/180;
+      this.vx = -Math.cos(angle)*spd;   // flip horizontal
+      this.vy =  Math.sin(angle)*spd;
+    }
     this.word   = pick(WORDS);
     this.color  = pick(COMET_PAL);
     this.r      = rand(2.2, 3.5);
@@ -785,7 +957,7 @@
       for(var bi=0;bi<22;bi++) stardust.push(new Stardust(this.x+rand(-14,14),this.y+rand(-14,14),this.color,null,rand(1,3.8)));
       return;
     }
-    if(!this.burnout&&(this.x>W+130||this.y>H+130)){
+    if(!this.burnout&&(this.x>W+130||this.x<-130||this.y>H+130)){
       for(var ti=0;ti<this.trail.length;ti+=3) stardust.push(new Stardust(this.trail[ti].x,this.trail[ti].y,this.color,null,rand(0.5,1.8)));
       this.done=true;
     }
@@ -980,6 +1152,80 @@
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
+})();
+</script>
+
+
+<!-- Ambient Music Player -->
+<div class="music-player" id="musicPlayer">
+  <div class="music-label" id="musicLabel">ambient off</div>
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle ambient music">♫</button>
+</div>
+
+<!-- Hidden SoundCloud widget -->
+<iframe id="scPlayer" class="music-frame" width="0" height="0"
+  scrolling="no" frameborder="no" allow="autoplay"
+  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1619975545&color=%237eccc0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
+</iframe>
+
+<script>
+(function(){
+  var playing = false;
+  var widget = null;
+  var loaded = false;
+
+  window.toggleMusic = function(){
+    var btn = document.getElementById('musicBtn');
+    var label = document.getElementById('musicLabel');
+    var frame = document.getElementById('scPlayer');
+
+    if(!loaded){
+      // First time — init the SC widget
+      frame.style.display = 'block';
+      widget = SC.Widget(frame);
+      widget.bind(SC.Widget.Events.READY, function(){
+        widget.setVolume(28); // soft — about 28%
+        widget.play();
+        playing = true;
+        btn.classList.add('playing');
+        btn.textContent = '♬';
+        label.textContent = 'ambient on';
+      });
+      loaded = true;
+      // Load SC widget API
+      if(!window.SC){
+        var s = document.createElement('script');
+        s.src = 'https://w.soundcloud.com/player/api.js';
+        s.onload = function(){
+          widget = SC.Widget(frame);
+          widget.bind(SC.Widget.Events.READY, function(){
+            widget.setVolume(28);
+            widget.play();
+            playing = true;
+            btn.classList.add('playing');
+            btn.textContent = '♬';
+            label.textContent = 'ambient on';
+          });
+        };
+        document.head.appendChild(s);
+      }
+      return;
+    }
+
+    if(playing){
+      widget.pause();
+      playing = false;
+      btn.classList.remove('playing');
+      btn.textContent = '♫';
+      label.textContent = 'ambient off';
+    } else {
+      widget.play();
+      playing = true;
+      btn.classList.add('playing');
+      btn.textContent = '♬';
+      label.textContent = 'ambient on';
+    }
+  };
 })();
 </script>
 
